@@ -3,6 +3,18 @@ variable "vpc_id" {
   type        = string
 }
 
+variable "log_destination" {
+  description = "The ARN of the S3 bucket to which the flow logs will be delivered"
+  type        = string
+  default     = ""
+}
+
+variable "create_s3_bucket" {
+  description = "Whether to create a new S3 bucket for VPC flow logs"
+  type        = bool
+  default     = true
+}
+
 data "aws_iam_policy_document" "vpc_flow_log_policy" {
   statement {
     sid    = "AWSLogDeliveryWrite"
