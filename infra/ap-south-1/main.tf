@@ -14,5 +14,6 @@ resource "aws_flow_log" "vpc_flow_log" {
 
 module "ec2_main" {
   source    = "../../ec2"
+  ami       = "ami-07b69f62c1d38b012"
   subnet_id = module.vpc_secondary.subnet_id
 }

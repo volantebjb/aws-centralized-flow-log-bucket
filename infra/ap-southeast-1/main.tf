@@ -23,9 +23,9 @@ module "bucket_without_policy" {
 }
 
 module "vpc_main" {
-  source         = "../../vpc"
-  vpc_name       = "${data.aws_caller_identity.current.account_id}-vpc-main"
-  vpc_cidr_block = "10.0.1.0/24"
+  source            = "../../vpc"
+  vpc_name          = "${data.aws_caller_identity.current.account_id}-vpc-main"
+  vpc_cidr_block    = "10.0.1.0/24"
   subnet_cidr_block = "10.0.1.0/28"
 }
 
@@ -35,6 +35,7 @@ module "vpc_main_flow_log" {
 }
 
 module "ec2_main" {
-  source = "../../ec2"
+  source    = "../../ec2"
+  ami       = "ami-0e48a8a6b7dc1d30b"
   subnet_id = module.vpc_main.subnet_id
 }
