@@ -12,8 +12,10 @@ resource "aws_flow_log" "vpc_flow_log" {
   traffic_type         = "ALL"
 }
 
-module "ec2_main" {
+module "ec2_secondary" {
   source    = "../../ec2"
   ami       = "ami-07b69f62c1d38b012"
   subnet_id = module.vpc_secondary.subnet_id
+  key_name  = "ec2-key"
+  public_key_path = "../ec2-key.pub"
 }

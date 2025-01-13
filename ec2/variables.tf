@@ -13,3 +13,13 @@ variable "subnet_id" {
   description = "The ID of the subnet to launch the instance in"
   type        = string
 }
+
+variable "key_name" {
+  description = "The name of the key pair"
+  type        = string
+}
+
+variable "public_key_path" {
+  description = "The path to the public key file"
+  type        = string
+}
