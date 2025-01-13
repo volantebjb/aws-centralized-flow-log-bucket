@@ -26,6 +26,7 @@ module "vpc_main" {
   source         = "../../vpc"
   vpc_name       = "${data.aws_caller_identity.current.account_id}-vpc-main"
   vpc_cidr_block = "10.0.1.0/24"
+  subnet_cidr_block = "10.0.1.0/28"
 }
 
 module "vpc_main_flow_log" {
@@ -33,4 +34,7 @@ module "vpc_main_flow_log" {
   vpc_id = module.vpc_main.vpc_id
 }
 
-
+module "ec2_main" {
+  source = "../../ec2"
+  subnet_id = module.vpc_main.subnet_id
+}
