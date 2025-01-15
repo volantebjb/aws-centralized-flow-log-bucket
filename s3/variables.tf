@@ -33,3 +33,29 @@ variable "pii_lifecycle_duration" {
   default     = 750
 }
 
+data "aws_iam_policy_document" "default_policy" {
+  statement {
+    sid    = "SecureTransport"
+    effect = "Deny"
+
+    actions = [
+      "s3:*"
+    ]
+
+    resources = [
+      "${aws_s3_bucket.bucket.arn}",
+      "${aws_s3_bucket.bucket.arn}/*"
+    ]
+
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    condition {
+      test     = "Bool"
+      variable = "aws:SecureTransport"
+      values   = ["false"]
+    }
+  }
+}

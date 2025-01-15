@@ -6,6 +6,11 @@ resource "aws_s3_bucket" "bucket" {
   )
 }
 
+resource "aws_s3_bucket_policy" "default_policy" {
+  bucket = aws_s3_bucket.bucket.id
+  policy = data.aws_iam_policy_document.default_policy.json
+}
+
 resource "aws_s3_bucket_lifecycle_configuration" "bucket_lifecycle" {
   bucket = aws_s3_bucket.bucket.bucket
 

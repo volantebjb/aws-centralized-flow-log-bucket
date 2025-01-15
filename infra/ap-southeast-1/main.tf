@@ -38,6 +38,6 @@ module "ec2_main" {
   source    = "../../ec2"
   ami       = "ami-0e48a8a6b7dc1d30b"
   subnet_id = module.vpc_main.subnet_id
-  key_name  = "ec2-key"
-  public_key_path = "../ec2-key.pub"
+  # key_name  = "ec2-key"
+  # public_key_path = "../ec2-key.pub"
 }
