@@ -12,12 +12,3 @@ variable "az_num" {
   description = "Number of availability zones to use"
   type        = number
 }
-
-variable "subnets" {
-  description = "Map of subnets to create"
-  type = map(object({
-    availability_zone = string
-    cidr_block        = string
-    is_public         = bool
-  }))
-}
