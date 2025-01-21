@@ -10,7 +10,7 @@ output "cidr_block" {
 
 output "gateway_id" {
   description = "The ID of the Internet Gateway"
-  value       = aws_internet_gateway.gw.id
+  value       = aws_internet_gateway.igw.id
 }
 
 output "public_rtb_id" {
